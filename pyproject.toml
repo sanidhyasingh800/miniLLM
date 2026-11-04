@@ -1,0 +1,20 @@
+[project]
+name = "minillm"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { email = "sanidhya.singh2016@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "torch>=2.15.0",
+    "transformers>=5.22.1",
+]
+
+[project.scripts]
+minillm = "minillm:main"
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
