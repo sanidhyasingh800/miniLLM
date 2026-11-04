@@ -1,2 +1,3 @@
-**MiniLLM**
+# MiniLLM
+
 As a student interested in both ML and systems, I wanted to learn about the modern day research/applications on optimizing LLM inference looks like. We'll start with a naive inference engine that pretty much does nothing but runs inference in a for loop for each request it gets without any caching, batching, or any other optimization out there and build our way up to hopefully some fraction of modern inference engines can achieve.
