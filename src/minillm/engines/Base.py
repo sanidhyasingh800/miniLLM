@@ -1,4 +1,6 @@
+import torch
 from abc import ABC, abstractmethod
+from minillm.schemas import Request, InferenceResponse
 
 class BaseEngine(ABC):
     def __init__(self, model, tokenizer, device):
@@ -6,11 +8,11 @@ class BaseEngine(ABC):
         self.tokenizer = tokenizer
         self.device = device
 
-    # must assert request is a single query
-    @abstractmethod
-    def inference(self, request:list[str], max_new_tokens:int = 32) -> list[str]:
-        pass
+    def synchronize_device(self):
+        if self.device.type == "cuda":
+            torch.cuda.synchronize(self.device)
+
 
     @abstractmethod
-    def batch_inference(self, requests: list[str],max_new_tokens: int = 32) -> list[str]:
+    def inference(self, requests: list[Request],max_new_tokens: int = 32) -> InferenceResponse:
         pass
